@@ -134,8 +134,8 @@ const initialize = () => {
   });
 };
 
- mongoose.connect("mongodb://192.168.129.100/zhyq-repair");
-//mongoose.connect("mongodb://127.0.0.1/zhyq-repair");
+// mongoose.connect("mongodb://192.168.129.100/zhyq-repair");
+mongoose.connect("mongodb://127.0.0.1/zhyq-repair");
 const db = mongoose.connection;
 
 db.on("error", console.error.bind(console, "Database connection error."));
