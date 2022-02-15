@@ -62,8 +62,8 @@ router.post("/api/private/v1/register", (req, res) => {
   //     res.status(401).end(`{"msg":"此账户没注册！"}`);
   //   }
   // });
-
-  db.User.findOne({ userName: req.body.userName }, (err, doc) => {
+//console.log(req.query)
+  db.User.findOne({ userName: req.query.userName }, (err, doc) => {
     if (err) {
       console.log(err);
     } else if (doc) {
@@ -72,13 +72,13 @@ router.post("/api/private/v1/register", (req, res) => {
     } else {
       const salt = rand(160, 36);
       const user = {
-        userName: req.body.userName,
-        userPassword: sha1(req.body.userPassword + salt),
+        userName: req.query.userName,
+        userPassword: sha1(req.query.userPassword + salt),
         salt: salt,
         role: "",
-        name: req.body.name,       
-        department: req.body.department,
-        mobile: req.body.mobile,
+        name: req.query.name,       
+        department: req.query.department,
+        mobile: req.query.mobile,
         createdAt: Date(),
         updateAt: Date(),
       };

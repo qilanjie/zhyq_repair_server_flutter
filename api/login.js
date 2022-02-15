@@ -20,14 +20,15 @@ const creatToken = (id, userName, role) => {
 };
 
 router.post("/api/private/v1/login", (req, res) => {
-  console.log(req.body);
-  db.User.findOne({ userName: req.body.userName }, (err, doc) => {
+  
+  console.log(req.query);
+  db.User.findOne({ userName: req.query.userName }, (err, doc) => {
     if (err) {
       console.log(err);
     } else if (doc) {
       
       const salt = doc.salt;
-      if (doc.userPassword === sha1(req.body.userPassword + salt)) {
+      if (doc.userPassword === sha1(req.query.userPassword + salt)) {
         const token = creatToken(doc._id, doc.userName, doc.role);
         
         res.sendResult({
