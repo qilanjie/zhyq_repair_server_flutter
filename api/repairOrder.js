@@ -125,14 +125,14 @@ router.put("/api/private/v1/edit", confirmToken, (req, res) => {
   });
 });
 router.post("/api/private/v1/equipments", confirmToken, async (req, res) => {
-  console.log(req.body);
+  console.log(req.query);
   const {
     search_key,
     search_date,
     search_content,
     pagenum,
     pagesize,
-  } = req.body;
+  } = req.query;
 
   let _requirement = {};
   let _total;

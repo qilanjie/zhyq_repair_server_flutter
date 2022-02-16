@@ -5,6 +5,7 @@ const secret = {
 
 // 检查token是否正确
 const confirmToken = (req, res, next) => {
+ 
   if (!req.headers.authorization) {
     res.status(401).end("no token");
   } else {
